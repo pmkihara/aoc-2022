@@ -1,5 +1,5 @@
-input = File.read('input.txt')
-example = File.read('example.txt')
+# example = File.read(File.join(__dir__, './example.txt'))
+input = File.read(File.join(__dir__, './input.txt'))
 
 def prepare_input(input)
   input.lines.map { |line| line.chomp.split }
@@ -26,7 +26,7 @@ SHAPES1 = {
     'B' => 6,
     'C' => 3,
     score: 3
-  },
+  }
 }
 
 SHAPES2 = {
@@ -34,21 +34,21 @@ SHAPES2 = {
   'X' => {
     'A' => 3, # rock wins to scissors
     'B' => 1, # paper wins to rock
-    'C' => 2, # scissors wins to paper
+    'C' => 2  # scissors wins to paper
 
   },
   # draw
   'Y' => {
     'A' => 1 + 3, # rock
     'B' => 2 + 3, # paper
-    'C' => 3 + 3, # scissors
+    'C' => 3 + 3  # scissors
   },
   # win
   'Z' => {
     'A' => 2 + 6, # rock loses to paper
     'B' => 3 + 6, # paper loses to scissors
-    'C' => 1 + 6, # scissors lose to rock
-  },
+    'C' => 1 + 6  # scissors lose to rock
+  }
 }
 
 def solve1(input)
@@ -56,7 +56,6 @@ def solve1(input)
     shape = SHAPES1[play[1]]
     sum + shape[play[0]] + shape[:score]
   end
-
 end
 
 def solve2(input)
@@ -64,7 +63,7 @@ def solve2(input)
     shape = SHAPES2[play[1]]
     sum + shape[play[0]]
   end
-
 end
 
+p solve1(input)
 p solve2(input)
