@@ -11,7 +11,7 @@ describe '#prepare_input' do
 end
 
 describe '#split_line_in_half' do
-  let (:splited_line) { split_line_in_half('vJrwpWtwJgWrhcsFMMfFFhFp') }
+  let(:splited_line) { split_line_in_half('vJrwpWtwJgWrhcsFMMfFFhFp') }
 
   it 'should separate each lines in two arrays with the same size' do
     expect(splited_line).to be_a Array
@@ -37,7 +37,18 @@ describe '#find_repeated_letter' do
 end
 
 describe '#split_in_groups_of_three' do
-  let(:groups) { split_in_groups_of_three(["vJrwpWtwJgWrhcsFMMfFFhFp", "jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL", "PmmdzqPrVvPwwTWBwg", "wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn", "ttgJtRGJQctTZtZT", "CrZsJsPPZsGzwwsLwLmpwMDw"]) }
+  let(:groups) do
+    split_in_groups_of_three(
+      %w[
+        vJrwpWtwJgWrhcsFMMfFFhFp
+        jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL
+        PmmdzqPrVvPwwTWBwg
+        wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn
+        ttgJtRGJQctTZtZT
+        CrZsJsPPZsGzwwsLwLmpwMDw
+      ]
+    )
+  end
 
   it 'should return an array' do
     expect(groups).to be_a Array
@@ -49,8 +60,8 @@ describe '#split_in_groups_of_three' do
 end
 
 describe '#find_common_letter_in_group' do
-  let(:group1) { ["vJrwpWtwJgWrhcsFMMfFFhFp", "jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL", "PmmdzqPrVvPwwTWBwg"] }
-  let(:group2) { ["wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn", "ttgJtRGJQctTZtZT", "CrZsJsPPZsGzwwsLwLmpwMDw"] }
+  let(:group1) { %w[vJrwpWtwJgWrhcsFMMfFFhFp jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL PmmdzqPrVvPwwTWBwg] }
+  let(:group2) { %w[wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn ttgJtRGJQctTZtZT CrZsJsPPZsGzwwsLwLmpwMDw] }
 
   it 'should return a letter' do
     expect(find_common_letter_in_group(group1)).to be_a String
@@ -60,7 +71,6 @@ describe '#find_common_letter_in_group' do
   it 'should find the right letter' do
     expect(find_common_letter_in_group(group1)).to eq 'r'
     expect(find_common_letter_in_group(group2)).to eq 'Z'
-
   end
 end
 

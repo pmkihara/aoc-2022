@@ -56,7 +56,7 @@ LETTER_VALUES = {
 }
 
 def prepare_input(input)
-  input.lines.map { |line| line.chomp }
+  input.lines.map(&:chomp)
 end
 
 def split_line_in_half(line)
