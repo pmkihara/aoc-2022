@@ -1,9 +1,9 @@
 input = File.read(File.join(__dir__, './input.txt'))
 
 def separate_crates(array)
-  n_crates = array.pop.strip[-1].to_i
+  array.pop.strip[-1].to_i
   grid = array.map { |line| line.scan(/ ?[ \[]( |\w)[ \]]/).flatten }
-  grid.reverse.transpose.map {|col| col.reject { |item| item == ' ' } }
+  grid.reverse.transpose.map { |col| col.reject { |item| item == ' ' } }
 end
 
 def separate_instructions(array)
