@@ -2,15 +2,7 @@ input = File.read(File.join(__dir__, './input.txt'))
 
 def separate_crates(array)
   n_crates = array.pop.strip[-1].to_i
-  regex = ' ?(   |\[\w\])' * n_crates
-  grid = array.map do |line|
-    match_data = line.match(Regexp.new(regex))
-    crates = []
-    n_crates.times do |i|
-      crates << match_data[i + 1][1]
-    end
-    crates
-  end
+  grid = array.map { |line| line.scan(/ ?[ \[]( |\w)[ \]]/).flatten }
   grid.reverse.transpose.map {|col| col.reject { |item| item == ' ' } }
 end
 
