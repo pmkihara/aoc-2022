@@ -1,7 +1,7 @@
 input = File.read(File.join(__dir__, './input.txt'))
 
 def separate_crates(array)
-  array.pop.strip[-1].to_i
+  array.pop.strip[-1]
   grid = array.map { |line| line.scan(/ ?[ \[]( |\w)[ \]]/).flatten }
   grid.reverse.transpose.map { |col| col.reject { |item| item == ' ' } }
 end

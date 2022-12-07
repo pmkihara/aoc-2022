@@ -14,13 +14,13 @@ describe '#separate_crates' do
 
   it 'should separate multiple line crates correctly' do
     expect(separate_crates(
-      [
-        '    [D]    ',
-        '[N] [C]    ',
-        '[Z] [M] [P]',
-        ' 1   2   3 '
-      ]
-    )).to eq [%w[Z N], %w[M C D], %w[P]]
+             [
+               '    [D]    ',
+               '[N] [C]    ',
+               '[Z] [M] [P]',
+               ' 1   2   3 '
+             ]
+           )).to eq [%w[Z N], %w[M C D], %w[P]]
   end
 end
 
