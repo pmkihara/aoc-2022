@@ -7,7 +7,7 @@ directories = {
       'e' => {
         files: {
           'i' => 584
-        }
+        },
       },
       files: {
         'f' => 29116,
