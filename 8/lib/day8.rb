@@ -58,6 +58,7 @@ def prepare_input(input)
 end
 
 def create_forest(lines)
+  cols = lines.transpose
   lines.each_with_index do |line, line_index|
     line.each_with_index do |char, char_index|
       tree = Tree.new({
@@ -67,8 +68,8 @@ def create_forest(lines)
                                line_index == lines.length - 1 ||
                                char_index == line.length - 1)
                       })
-      tree.top_neighbours = lines.transpose[char_index][0...line_index].reverse
-      tree.bottom_neighbours = lines.transpose[char_index][(line_index + 1)..]
+      tree.top_neighbours = cols[char_index][0...line_index].reverse
+      tree.bottom_neighbours = cols[char_index][(line_index + 1)..]
       tree.left_neighbours = line[0...char_index].reverse
       tree.right_neighbours = line[(char_index + 1)..]
       tree.visible?
@@ -90,4 +91,4 @@ def solve2(input)
 end
 
 # p solve1(input)
-# p solve2(input)
+p solve2(input)
