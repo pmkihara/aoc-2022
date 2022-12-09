@@ -14,10 +14,7 @@ def prepare_input(input)
     elsif line.start_with?('$ cd')
       dir_history << line[5..] # move to child dir
     elsif line.start_with?('dir')
-      dir_name = line[4..]
-      unless dir_history.inject(filesystem, :[])[dir_name]
-        dir_history.inject(filesystem, :[])[dir_name] = {files: {}}
-      end
+      dir_history.inject(filesystem, :[])[line[4..]] ||= { files: {} }
     elsif !line.start_with?('$ ls')
       file = line.split
       dir_history.inject(filesystem, :[])[:files][file[1]] = file[0].to_i
@@ -30,17 +27,15 @@ def calculate_directory_size(directory, sum = 0)
   sum = directory[:files].values.sum
   return sum if directory.length == 1
 
-  directory.keys.each do |key|
-    if key != :files
-      sum += calculate_directory_size(directory[key], sum)
-    end
+  directory.each_key do |key|
+    sum += calculate_directory_size(directory[key], sum) if key != :files
   end
   sum
 end
 
 def calculate_total_size(directory, sum = 0)
   dir_size = calculate_directory_size(directory)
-  sum += dir_size if dir_size <= 100000
+  sum += dir_size if dir_size <= 100_000
   return sum if directory.length == 1
 
   directory.each do |key, child_dir|
@@ -70,9 +65,9 @@ def solve2(input)
   filesystem = prepare_input(input)
   sizes = calculate_all_directories(filesystem)
   total_size = sizes['/']
-  unused_space = 70000000 - total_size
-  required_space = 30000000 - unused_space
-  sizes.select { |key, value| value >= required_space }.min {|pair1, pair2| pair1[1] <=> pair2[1] }[1]
+  unused_space = 70_000_000 - total_size
+  required_space = 30_000_000 - unused_space
+  sizes.select { |_key, value| value >= required_space }.min {|pair1, pair2| pair1[1] <=> pair2[1] }[1]
 end
 
 # p solve1(input)
