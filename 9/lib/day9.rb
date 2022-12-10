@@ -1,3 +1,4 @@
+require 'matrix'
 require 'set'
 input = File.read(File.join(__dir__, './input.txt'))
 
@@ -15,6 +16,7 @@ class Rope
       (@size - 1).times do |index|
         move_knot(index + 1)
       end
+      # print_matrix
     end
   end
 
@@ -48,7 +50,22 @@ class Rope
       y: previous[:y] - (y_distance / length).round
     }
 
-    @tail_tracks << @knots[@size - 1] if index == @size - 1
+    @tail_tracks << @knots[@size - 1]
+  end
+
+  def print_matrix
+    m = Matrix.build(46, 62) { '.' }
+    m.to_a.each_with_index do |line, line_index|
+      line.each_with_index do |col, col_index|
+        if col_index == 61
+          puts @knots.any? { |knot| knot[:x] == col_index - 20 && knot[:y] == line_index - 10 } ? 'T' : col
+        else
+          print @knots.any? { |knot| knot[:x] == col_index - 20 && knot[:y] == line_index - 10 } ? 'T' : col
+        end
+      end
+    end
+    sleep(0.3)
+    system 'clear'
   end
 end
 
@@ -74,5 +91,5 @@ def solve2(input)
   rope.tail_tracks_count
 end
 
-p solve1(input)
+# p solve1(input)
 p solve2(input)
