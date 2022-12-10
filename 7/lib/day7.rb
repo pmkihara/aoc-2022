@@ -67,7 +67,7 @@ def solve2(input)
   total_size = sizes['/']
   unused_space = 70_000_000 - total_size
   required_space = 30_000_000 - unused_space
-  sizes.select { |_key, value| value >= required_space }.min {|pair1, pair2| pair1[1] <=> pair2[1] }[1]
+  sizes.select { |_key, value| value >= required_space }.min { |pair1, pair2| pair1[1] <=> pair2[1] }[1]
 end
 
 # p solve1(input)
