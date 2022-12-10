@@ -16,11 +16,11 @@ end
 
 describe '#draw_lines' do
   it 'should return the correct image' do
-    expect(draw_lines(example)[0]).to eq '##..##..##..##..##..##..##..##..##..##..'
-    expect(draw_lines(example)[1]).to eq '###...###...###...###...###...###...###.'
-    expect(draw_lines(example)[2]).to eq '####....####....####....####....####....'
-    expect(draw_lines(example)[3]).to eq '#####.....#####.....#####.....#####.....'
-    expect(draw_lines(example)[4]).to eq '######......######......######......####'
-    expect(draw_lines(example)[5]).to eq '#######.......#######.......#######.....'
+    expect(draw_lines(example)[0]).to eq '##  ##  ##  ##  ##  ##  ##  ##  ##  ##  '
+    expect(draw_lines(example)[1]).to eq '###   ###   ###   ###   ###   ###   ### '
+    expect(draw_lines(example)[2]).to eq '####    ####    ####    ####    ####    '
+    expect(draw_lines(example)[3]).to eq '#####     #####     #####     #####     '
+    expect(draw_lines(example)[4]).to eq '######      ######      ######      ####'
+    expect(draw_lines(example)[5]).to eq '#######       #######       #######     '
   end
 end

@@ -40,7 +40,7 @@ def draw_lines(input)
 
     40.times do |index|
       x_position = [cycles[cycle_count], cycles[cycle_count] + 1, cycles[cycle_count] + 2]
-      line << (x_position.include?(index + 1) ? '#' : '.')
+      line << (x_position.include?(index + 1) ? '#' : ' ')
       cycle_count += 1
     end
     line.join
