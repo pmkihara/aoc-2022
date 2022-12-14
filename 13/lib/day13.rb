@@ -9,28 +9,6 @@ def prepare_input(input)
   end
 end
 
-# def right_order?(packet1, packet2)
-#   packet1 = [packet1] if packet1.class != packet2.class && packet1.instance_of?(Integer)
-#   packet2 = [packet2] if packet1.class != packet2.class && packet2.instance_of?(Integer)
-
-#   return true if packet1.empty? && packet2.any?
-#   return false if packet1.any? && packet2.empty?
-
-#   left = packet1.shift # nil if empty array
-#   right = packet2.shift # nil if empty array
-
-#   left = [left] if left.class != right.class && left.instance_of?(Integer)
-#   right = [right] if left.class != right.class && right.instance_of?(Integer)
-
-#   return true if left.nil?
-#   return false if right.nil?
-#   return true if left.instance_of?(Integer) && left < right
-#   return false if left.instance_of?(Integer) && left > right
-#   return right_order?(left, right) if left.instance_of?(Array)
-
-#   right_order?(packet1, packet2)
-# end
-
 def right_order?(packet1, packet2)
   left, *rem_pack1 = packet1
   right, *rem_pack2 = packet2
